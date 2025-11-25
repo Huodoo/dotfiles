@@ -1,0 +1,34 @@
+# ~/.bashrc
+
+[[ $- != *i* ]] && return
+
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias vi=nvim
+
+export EDITOR=nvim
+
+WORK_DIR=""
+get_git_toplevel_name() {
+  if git rev-parse --show-toplevel > /dev/null 2>&1; then
+    basename "$(git rev-parse --show-toplevel 2>/dev/null)"
+  fi
+}
+
+CURRENT_BRANCH=""
+parse_git_branch() {
+  git rev-parse --is-inside-work-tree &>/dev/null || return
+  local branch=$(git symbolic-ref --short HEAD 2>/dev/null || git describe --tags --exact-match 2>/dev/null)
+  if [ -n "$branch" ]; then
+    echo "($branch) "
+  fi
+}
+
+update_git_info() {
+  WORK_DIR=$(get_git_toplevel_name)
+  CURRENT_BRANCH=$(parse_git_branch)
+}
+
+[[ $PROMPT_COMMAND == *update_git_info* ]] || PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }update_git_info"
+
+PS1='\[\e[01;32m\][\u\[\e[0m\] \[\e[01;36m\]$WORK_DIR\[\e[0m\]\[\e[01;33m\]$CURRENT_BRANCH\[\e[0m\]\[\e[01;34m\]\w\[\e[0m\]\[\e[01;32m\]]\$\[\e[0m\] '
