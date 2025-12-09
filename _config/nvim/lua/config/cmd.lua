@@ -16,6 +16,10 @@ map("", "T", function()
 end, { remap = true })
 map("n", "<leader>hw", hop.hint_words, { silent = true, desc = "Hop to Word" })
 map("n", "<leader>hl", hop.hint_lines_skip_whitespace, { silent = true, desc = "Hop to Lines" })
+map("n", "<C-h>", "<C-w>h")
+map("n", "<C-j>", "<C-w>j")
+map("n", "<C-k>", "<C-w>k")
+map("n", "<C-l>", "<C-w>l")
 
 -- local vscode = require("")
 -- Config
@@ -37,8 +41,4 @@ else
   map("n", "<leader>fh", telescope_builtin.help_tags, { desc = "Telescope help tags" })
   map('n', '<leader>fr', telescope_builtin.oldfiles, { desc = "Telescope old files" })
   map('n', '<leader>e', telescope.extensions.file_browser.file_browser, { desc = "Telescope file browser" })
-  map("n", "<C-h>", "<C-w>h")
-  map("n", "<C-j>", "<C-w>j")
-  map("n", "<C-k>", "<C-w>k")
-  map("n", "<C-l>", "<C-w>l")
 end
