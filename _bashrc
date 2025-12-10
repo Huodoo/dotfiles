@@ -2,11 +2,17 @@
 
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=auto'
-alias grep='grep --color=auto'
-alias vi=nvim
-
 export EDITOR=nvim
+export VISUAL=nvim
+
+BASHD_DIR="${HOME}/.bashrc.d"
+if [[ -d "${BASHD_DIR}" ]]; then
+  for config_file in "${BASHD_DIR}"/*.sh; do
+    if [[ -r "${config_file}" && -f "${config_file}" ]]; then
+      source "${config_file}"
+    fi
+  done
+fi
 
 WORK_DIR=""
 get_git_toplevel_name() {
