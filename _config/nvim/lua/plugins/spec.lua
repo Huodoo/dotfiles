@@ -23,5 +23,9 @@ return {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
     opts = {}
-  }
+  },
+  { "mason-org/mason.nvim", opts = {} },
+  { "mason-org/mason-lspconfig.nvim", opts = {},
+  },
+  { "neovim/nvim-lspconfig", lazy = true },
 }
