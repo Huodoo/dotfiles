@@ -1,9 +1,11 @@
+local map = vim.keymap.set
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 vim.g.loaded_node_provider = 0    -- 禁用node插件
 vim.g.loaded_perl_provider = 0    -- 禁用perl插件
-vim.g.loaded_python3_provider = 0  -- 禁用python插件
+vim.g.loaded_python3_provider = 0 -- 禁用python插件
 vim.g.loaded_ruby_provider = 0    -- 禁用ruby插件
 
 vim.opt.breakindent = true        -- 换行后自动缩进
@@ -16,7 +18,17 @@ vim.opt.shiftwidth = 2            -- 缩进宽度
 vim.opt.tabstop = 2               -- Tab宽度
 vim.opt.termguicolors = true      -- 终端全彩模式
 
-if not vim.g.vscode then
+map("n", "<C-h>", "<C-w>h")
+map("n", "<C-j>", "<C-w>j")
+map("n", "<C-k>", "<C-w>k")
+map("n", "<C-l>", "<C-w>l")
+
+if vim.g.vscode then
+  local vscode = require('vscode')
+  map("n", "<leader>ff", function() vscode.action('workbench.action.quickOpen') end)
+  map("n", "<leader>fg", function() vscode.action('workbench.action.findInFiles') end)
+  map("n", "<leader>e", function() vscode.action('workbench.view.explorer') end)
+else
   vim.g.clipboard = {
     name = "WSLClipboard",
     copy = {
