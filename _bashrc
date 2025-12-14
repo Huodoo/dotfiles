@@ -4,6 +4,8 @@
 
 export EDITOR=nvim
 export VISUAL=nvim
+export MANPAGER="nvim +Man!"
+export PAGER="nvim -R"
 
 BASHD_DIR="${HOME}/.bashrc.d"
 if [[ -d "${BASHD_DIR}" ]]; then

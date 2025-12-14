@@ -29,6 +29,7 @@ if vim.g.vscode then
   map("n", "<leader>fg", function() vscode.action('workbench.action.findInFiles') end)
   map("n", "<leader>e", function() vscode.action('workbench.view.explorer') end)
 else
+  map("n", "<leader>lz", "<cmd>Lazy<CR>")
   vim.g.clipboard = {
     name = "WSLClipboard",
     copy = {

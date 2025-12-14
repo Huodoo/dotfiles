@@ -42,4 +42,6 @@
 
 [pull]
   rebase = true
+[color]
+  pager = false
 
