@@ -29,7 +29,8 @@ if vim.g.vscode then
   map("n", "<leader>fg", function() vscode.action('workbench.action.findInFiles') end)
   map("n", "<leader>e", function() vscode.action('workbench.view.explorer') end)
 else
-  map("n", "<leader>lz", "<cmd>Lazy<CR>")
+  local lazy_view = require("lazy.view")
+  map("n", "<leader>lz",function() lazy_view.show() end,{ desc = "Open Lazy Plugin Manager" })
   vim.g.clipboard = {
     name = "WSLClipboard",
     copy = {
