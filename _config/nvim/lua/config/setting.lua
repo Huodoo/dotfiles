@@ -18,11 +18,6 @@ vim.opt.shiftwidth = 2            -- 缩进宽度
 vim.opt.tabstop = 2               -- Tab宽度
 vim.opt.termguicolors = true      -- 终端全彩模式
 
-map("n", "<C-h>", "<C-w>h")
-map("n", "<C-j>", "<C-w>j")
-map("n", "<C-k>", "<C-w>k")
-map("n", "<C-l>", "<C-w>l")
-
 if vim.g.vscode then
   local vscode = require('vscode')
   map("n", "<leader>ff", function() vscode.action('workbench.action.quickOpen') end)
