@@ -1,3 +1,5 @@
+local utils = require("utils")
+
 return {
   {
     "nvim-telescope/telescope.nvim",
@@ -65,6 +67,9 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter",
+    cond = function()
+      return utils.nvim_at_least("0.11")
+    end,
     opts = {
       highlight = {
         enable = true

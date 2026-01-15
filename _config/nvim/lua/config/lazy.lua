@@ -15,15 +15,19 @@ vim.opt.rtp:prepend(lazypath)
 require("config.setting")
 
 -- Setup lazy.nvim
+local utils = require("utils")
 require("lazy").setup({
   spec = {
     {
-      import = "plugins.common"
+      import = "plugins.common",
+      cond = function()
+        return utils.nvim_at_least("0.10")
+      end
     },
     {
       import = "plugins.spec",
       cond = function()
-        return not vim.g.vscode
+        return not vim.g.vscode and utils.nvim_at_least("0.10")
       end
     }
   },
