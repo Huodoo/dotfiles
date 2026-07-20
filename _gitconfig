@@ -42,3 +42,7 @@
 
 [pull]
   rebase = true
+
+[user]
+  email = huodongdonglife@outlook.com
+  name = huodoo
