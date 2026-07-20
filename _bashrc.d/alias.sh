@@ -1,3 +1,5 @@
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-alias vi=nvim
+
+alias ll='ls -l'
+alias la='ls -Al' 
